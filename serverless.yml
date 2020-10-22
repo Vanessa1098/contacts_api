@@ -70,8 +70,6 @@ package:
 
 functions:
   - '${file(src/handlers/contacts/contacts.serverless.yml)}'
-  hello:
-  - handler: handler.hello
 
 plugins:
   - serverless-offline
@@ -79,8 +77,8 @@ plugins:
 custom:
   # vars
   contactsTable: 'contacts'
+  stage: ${opt:stage, self:provider.stage}
 
   # plugins
   serverless-offline:
     host: 0.0.0.0 # for docker container hosting
-    stage: ${opt:stage, self:provider.stage}
