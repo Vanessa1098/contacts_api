@@ -6,6 +6,7 @@ const { DocumentClient } = DynamoDB;
 
 const { ContactSeeder } = require('./contact.seeder');
 const contactsData = require('./contacts-test-data.json');
+const { CONTACTS_TABLE } = process.env;
 
 const dynamo = new DynamoDB({
   endpoint: process.env.AWS_ENDPOINT,
@@ -15,7 +16,7 @@ const dynamo = new DynamoDB({
 });
 
 const doclient = new DocumentClient({ service: dynamo });
-const contactSeeder = new ContactSeeder(dynamo, doclient);
+const contactSeeder = new ContactSeeder(dynamo, doclient, CONTACTS_TABLE);
 
 const log = (...mgs) => console.log('>>', ...mgs);
 

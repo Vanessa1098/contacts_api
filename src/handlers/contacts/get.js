@@ -1,14 +1,12 @@
-
 require('dotenv/config');
 
-const { ContactRepository } = require('../../repositories/contact.repository');
 const { withStatusCode } = require('../../utils/response.util');
-const { withProcessEnv } = require('../../dynamodb.factory');
+const { createRepository } = require('../../utils/repository.util');
 
-const docClient = withProcessEnv(process.env)();
-const repository = new ContactRepository(docClient);
+const repository = createRepository(process.env)();
 const ok = withStatusCode(200, JSON.stringify);
 const notFound = withStatusCode(404);
+
 
 exports.handler = async (event) => {
   const { id } = event.pathParameters;

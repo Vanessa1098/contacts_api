@@ -4,11 +4,12 @@ class ContactSeeder {
    * @param {AWS.DynamoDB} dynamodb The dynamo db instance
    * @param {AWS.DynamoDB.DocumentClient} docClient The dynamo db document client
    */
-  constructor(dynamodb, docClient) {
+  constructor(dynamodb, docClient, tableName) {
     this.dynamodb = dynamodb;
     this.docClient = docClient;
 
     this._tablename = 'contacts';
+    this._tableName = tableName;
   }
 
   async hasTable() {
