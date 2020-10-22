@@ -29,6 +29,6 @@ jobs:
       name: "Deploy Test Users API"
       if: type = push AND branch = master
       env:
-        - SERVICE_PATH="routes-api"
-        - STAGE_NAME=prod
+        - SERVICE_PATH="src"
+        - STAGE_NAME=dev
         - *PRODUCTION_ENV
